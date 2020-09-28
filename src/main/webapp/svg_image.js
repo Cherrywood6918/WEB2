@@ -44,5 +44,6 @@ function point_draw() {
     context.beginPath();
     context.arc(x, y, 2, 0, Math.PI * 2, false);
     context.fill();
+    context.stroke();
     });
 }

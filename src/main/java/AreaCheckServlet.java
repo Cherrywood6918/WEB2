@@ -49,8 +49,10 @@ public class AreaCheckServlet extends HttpServlet {
     }
 
     private String checkArea(double x, double y, double r) {
-        if ((x * x + y * y <= r / 2 * (r / 2)) && (x - r / 2 <= y) && (y >= -r) && (x >= -r) && (x <= 0 || y <= 0))
-            return "True";
+        boolean sector = (x * x + y * y <= r / 2 * (r / 2)) && y >= 0 && x <= 0;
+        boolean rect = ((y >= -r) && (x >= -r) && x <=0 && y <= 0);
+        boolean triangle = (x - r / 2 <= y) && x >= 0 && y <= 0;
+        if (rect || sector || triangle) return "True";
         else return "False";
     }
 

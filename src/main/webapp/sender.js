@@ -1,8 +1,4 @@
 function sendRequest(x,y,r,flag) {
-    alert(x);
-    alert(y);
-    alert(r);
-    alert(flag);
     $.ajax({
         method: "GET",
         url: "/web2-1.0-SNAPSHOT/controller?coordinateX=" + x + "&coordinateY="
