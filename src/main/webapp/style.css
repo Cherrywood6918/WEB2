@@ -1,0 +1,134 @@
+
+html, body {
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background: bisque;
+}
+
+header {
+    height: 15%;
+    background: cadetblue;
+    color: white;
+}
+
+.authors {
+    padding-left: 10px;
+    padding-top: 20px;
+}
+
+div.content {
+    height: 70%;
+}
+
+.form-content .input-invalid {
+    border-color: #720004;
+    background: indianred;
+    color: white;
+}
+
+.table-content {
+    float: left;
+    margin-top: 50px;
+    text-align: center;
+}
+
+.form-content {
+    background: cadetblue;
+    float: left;
+    display: block;
+
+    border-radius: 10px;
+    outline: 1px dashed white;
+    outline-offset: -10px;
+    text-align: center;
+    width: 450px;
+    height: 200px;
+    margin-top: 100px;
+    margin-left: 100px;
+}
+
+
+ .img {
+    float: left;
+    display: block;
+    width: 300px;
+    height: 300px;
+    margin-top: 50px;
+    margin-left: 15%;
+    box-shadow: cadetblue 0 0 15px;
+}
+
+.table-data {
+    border-collapse: collapse;
+    border: 3px solid cadetblue;
+    width: 100%;
+    word-break: break-all;
+    text-align: center;
+    table-layout: fixed;
+}
+
+.table-data td, th {
+    border: 2px solid cadetblue;
+}
+
+.table-data th {
+    background: cadetblue;
+    color: white;
+    height: 30px;
+}
+
+.table-data td {
+    font-weight: bold;
+    color: gray;
+}
+
+.table-data tr {
+    background: white;
+}
+
+ input[type=text] {
+    width: 60%;
+    margin-top: 3%;
+    margin-bottom: 1%;
+    text-align: center;
+}
+
+ form select {
+     width: 60%;
+     margin-top: 30px;
+     margin-bottom: 1%;
+ }
+
+button,
+button:active,
+button:focus {
+    outline: none;
+}
+
+form button {
+    margin-top: 10px;
+    background: white;
+    border: 1px solid #434343;
+    border-radius: 10px;
+    color: darkgray;
+    font-family: monospace;
+    height: 40px;
+    width: 100px;
+
+}
+
+form button:hover {
+    box-shadow: white 0 0 4px;
+}
+
+form button:active {
+    background-color: darkgray;
+    color: #1b1b1b;
+
+}
+

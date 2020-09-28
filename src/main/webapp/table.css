@@ -1,0 +1,38 @@
+html, body {
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background: bisque;
+}
+
+table {
+    border-collapse: collapse;
+    border: 3px solid cadetblue;
+    width: 100%;
+    word-break: break-all;
+    text-align: center;
+    table-layout: fixed;
+}
+
+table td, th {
+    border: 2px solid cadetblue;
+}
+
+table th {
+    background: cadetblue;
+    color: white;
+    height: 30px;
+}
+
+table td {
+    font-weight: bold;
+    color: gray;
+}
+
+table tr {
+    background: white;
+}
