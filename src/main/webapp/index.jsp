@@ -33,7 +33,6 @@
     <div class="img">
         <canvas id='area' height='300' width='300' onclick="show_coords(event)"></canvas>
         <script>
-            //Выношу в отдельный - не работает
             let canvas = document.getElementById('area');
             let context = canvas.getContext('2d');
             context.fillStyle = "bisque";
@@ -133,7 +132,6 @@
                 <th>Y</th>
                 <th>R</th>
                 <th>Текущее время</th>
-                <th>Время выполнения</th>
                 <th>Результат</th>
             </tr>
             </thead>
@@ -145,7 +143,6 @@
                 <td><%= data.getY()%></td>
                 <td><%= data.getR()%></td>
                 <td><%= data.getDate()%></td>
-                <td><%= data.getTime()%></td>
                 <td><%= data.getRes()%></td>
             </tr>
             <% } %>

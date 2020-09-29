@@ -8,15 +8,13 @@ public class TableData implements Serializable {
     private double y;
     private double r;
     private String date;
-    private float time;
     private String res;
 
-    public TableData(double x, double y, double r, String date, float time, String res) {
+    public TableData(double x, double y, double r, String date, String res) {
         this.x = x;
         this.y = y;
         this.r = r;
         this.date = date;
-        this.time = time;
         this.res = res;
     }
 
@@ -52,13 +50,6 @@ public class TableData implements Serializable {
         this.date = date;
     }
 
-    public float getTime() {
-        return time;
-    }
-
-    public void setTime(float time) {
-        this.time = time;
-    }
 
     public String getRes() {
         return res;

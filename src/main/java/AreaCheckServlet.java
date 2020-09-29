@@ -43,7 +43,6 @@ public class AreaCheckServlet extends HttpServlet {
         printWriter.println("<td>" + tableData.getY() + "</td>");
         printWriter.println("<td>" + tableData.getR() + "</td>");
         printWriter.println("<td>" + tableData.getDate() + "</td>");
-        printWriter.println("<td>" + tableData.getTime() + "</td>");
         printWriter.println("<td>" + tableData.getRes() + "</td>");
         printWriter.println("</tr>");
     }
@@ -57,13 +56,11 @@ public class AreaCheckServlet extends HttpServlet {
     }
 
     private TableData dataGeneration(double x, double y, double r) {
-        float start = System.currentTimeMillis();
         String res = checkArea(x, y, r);
-        float elapsed = System.currentTimeMillis() - start;
         SimpleDateFormat format = new SimpleDateFormat("hh:mm:ss");
         Date date = new Date();
         String time = format.format(date);
-        return new TableData(x, y, r, time, elapsed, res);
+        return new TableData(x, y, r, time, res);
     }
 
     private boolean validate(double x, double y, double r, String flag) {

@@ -52,6 +52,10 @@ div.content {
     margin-left: 100px;
 }
 
+.form-content form label {
+    color: white;
+}
+
 
  .img {
     float: left;
@@ -127,7 +131,7 @@ form button:hover {
 }
 
 form button:active {
-    background-color: darkgray;
+    background-color: grey;
     color: #1b1b1b;
 
 }
