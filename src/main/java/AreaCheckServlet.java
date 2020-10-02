@@ -13,11 +13,15 @@ import java.util.Arrays;
 import java.util.Date;
 
 public class AreaCheckServlet extends HttpServlet {
-    private TableDataStatefulBean tableDataStatefulBean = new TableDataStatefulBean();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
+        resp.setContentType("application/json");
+        TableDataStatefulBean tableDataStatefulBean = (TableDataStatefulBean)session.getAttribute("tableDataBean");
+        if (tableDataStatefulBean == null) {
+            tableDataStatefulBean = new TableDataStatefulBean();
+        }
         session.setAttribute("tableDataBean", tableDataStatefulBean);
             try {
                 double x = Double.parseDouble(req.getParameter("coordinateX"));
@@ -28,7 +32,8 @@ public class AreaCheckServlet extends HttpServlet {
                     TableData tableData = dataGeneration(x, y, r);
                     tableDataStatefulBean.addData(tableData);
                     try(PrintWriter printWriter = resp.getWriter()) {
-                        rowTableGeneration(printWriter,tableData);
+                        //rowTableGeneration(printWriter,tableData);
+                        printWriter.println(tableData);
                     }
                 } else resp.sendError(HttpServletResponse.SC_BAD_REQUEST);
             } catch (NumberFormatException e) {
@@ -47,16 +52,15 @@ public class AreaCheckServlet extends HttpServlet {
         printWriter.println("</tr>");
     }
 
-    private String checkArea(double x, double y, double r) {
+    private boolean checkArea(double x, double y, double r) {
         boolean sector = (x * x + y * y <= r / 2 * (r / 2)) && y >= 0 && x <= 0;
         boolean rect = ((y >= -r) && (x >= -r) && x <=0 && y <= 0);
         boolean triangle = (x - r / 2 <= y) && x >= 0 && y <= 0;
-        if (rect || sector || triangle) return "True";
-        else return "False";
+        return rect || sector || triangle;
     }
 
     private TableData dataGeneration(double x, double y, double r) {
-        String res = checkArea(x, y, r);
+        boolean res = checkArea(x, y, r);
         SimpleDateFormat format = new SimpleDateFormat("hh:mm:ss");
         Date date = new Date();
         String time = format.format(date);

@@ -33,13 +33,12 @@ function point_draw() {
         let cy = array[index][1];
         let r = array[index][2];
         let flag = array[index][4];
-
         let canvas = document.getElementById('area');
         let context = canvas.getContext('2d');
         let x = cx * 100 / r + 150;
         let y = 150 - cy * 100 / r;
-        if (flag === "True") context.fillStyle = "green";
-        if (flag === "False") context.fillStyle = "red";
+        if (flag === "true") context.fillStyle = "green";
+        if (flag === "false") context.fillStyle = "red";
         context.beginPath();
         context.arc(x, y, 2, 0, Math.PI * 2, false);
         context.fill();

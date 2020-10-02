@@ -8,9 +8,9 @@ public class TableData implements Serializable {
     private double y;
     private double r;
     private String date;
-    private String res;
+    private boolean res;
 
-    public TableData(double x, double y, double r, String date, String res) {
+    public TableData(double x, double y, double r, String date, boolean res) {
         this.x = x;
         this.y = y;
         this.r = r;
@@ -51,11 +51,22 @@ public class TableData implements Serializable {
     }
 
 
-    public String getRes() {
+    public boolean getRes() {
         return res;
     }
 
-    public void setRes(String res) {
+    public void setRes(boolean res) {
         this.res = res;
+    }
+
+    @Override
+    public String toString() {
+        return "{" +
+                "\"x\":\"" + x +
+                "\", \"y\":\"" + y +
+                "\", \"r\":\"" + r +
+                "\", \"date\":\"" + date  +
+                "\", \"res\":\"" + res +
+                "\"}";
     }
 }
