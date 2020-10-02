@@ -32,24 +32,12 @@ public class AreaCheckServlet extends HttpServlet {
                     TableData tableData = dataGeneration(x, y, r);
                     tableDataStatefulBean.addData(tableData);
                     try(PrintWriter printWriter = resp.getWriter()) {
-                        //rowTableGeneration(printWriter,tableData);
                         printWriter.println(tableData);
                     }
                 } else resp.sendError(HttpServletResponse.SC_BAD_REQUEST);
             } catch (NumberFormatException e) {
                 resp.sendError(HttpServletResponse.SC_BAD_REQUEST);
             }
-    }
-
-    private void rowTableGeneration(PrintWriter printWriter, TableData tableData) {
-
-        printWriter.println("<tr>");
-        printWriter.println("<td>" + tableData.getX() + "</td>");
-        printWriter.println("<td>" + tableData.getY() + "</td>");
-        printWriter.println("<td>" + tableData.getR() + "</td>");
-        printWriter.println("<td>" + tableData.getDate() + "</td>");
-        printWriter.println("<td>" + tableData.getRes() + "</td>");
-        printWriter.println("</tr>");
     }
 
     private boolean checkArea(double x, double y, double r) {

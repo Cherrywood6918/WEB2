@@ -4,8 +4,8 @@ function sendRequest(x,y,r,flag) {
         url: "/web2-1.0-SNAPSHOT/controller?coordinateX=" + x + "&coordinateY="
             + y + "&radius=" + r + "&flag=" + flag,
     }).done(function (data) {
-        alert(data);
-        alert(toTable(data));
+        console.log(data);
+        console.log(toTable(data));
         $(".table-data tbody").append(toTable(data));
         point_draw();
     });
