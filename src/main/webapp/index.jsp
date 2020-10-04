@@ -143,7 +143,7 @@
                 <td><%= data.getX()%></td>
                 <td><%= data.getY()%></td>
                 <td><%= data.getR()%></td>
-                <td><%= new SimpleDateFormat("hh:mm:ss").format(data.getDate())%></td>
+                <td><%= data.getDate()%></td>
                 <td><%= data.isRes()%></td>
             </tr>
             <% } %>

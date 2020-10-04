@@ -50,7 +50,8 @@ public class AreaCheckServlet extends HttpServlet {
 
     private TableData dataGeneration(double x, double y, double r) {
         boolean res = checkArea(x, y, r);
-        return new TableData(x, y, r, new Date(), res);
+        Date date = new Date();
+        return new TableData(x, y, r, date, res);
     }
 
     private boolean validate(double x, double y, double r, String flag) {
