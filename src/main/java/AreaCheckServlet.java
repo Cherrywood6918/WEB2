@@ -1,5 +1,6 @@
 import beanComponents.TableData;
 import beanComponents.TableDataStatefulBean;
+import com.google.gson.Gson;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -32,7 +33,7 @@ public class AreaCheckServlet extends HttpServlet {
                     TableData tableData = dataGeneration(x, y, r);
                     tableDataStatefulBean.addData(tableData);
                     try(PrintWriter printWriter = resp.getWriter()) {
-                        printWriter.println(tableData);
+                        printWriter.println(new Gson().toJson(tableData));
                     }
                 } else resp.sendError(HttpServletResponse.SC_BAD_REQUEST);
             } catch (NumberFormatException e) {
@@ -49,10 +50,7 @@ public class AreaCheckServlet extends HttpServlet {
 
     private TableData dataGeneration(double x, double y, double r) {
         boolean res = checkArea(x, y, r);
-        SimpleDateFormat format = new SimpleDateFormat("hh:mm:ss");
-        Date date = new Date();
-        String time = format.format(date);
-        return new TableData(x, y, r, time, res);
+        return new TableData(x, y, r, new Date(), res);
     }
 
     private boolean validate(double x, double y, double r, String flag) {

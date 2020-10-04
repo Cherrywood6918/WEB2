@@ -7,10 +7,13 @@ public class TableData implements Serializable {
     private double x;
     private double y;
     private double r;
-    private String date;
+    private Date date;
     private boolean res;
 
-    public TableData(double x, double y, double r, String date, boolean res) {
+    public TableData() {
+    }
+
+    public TableData(double x, double y, double r, Date date, boolean res) {
         this.x = x;
         this.y = y;
         this.r = r;
@@ -42,16 +45,15 @@ public class TableData implements Serializable {
         this.r = r;
     }
 
-    public String getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 
-
-    public boolean getRes() {
+    public boolean isRes() {
         return res;
     }
 
@@ -59,14 +61,5 @@ public class TableData implements Serializable {
         this.res = res;
     }
 
-    @Override
-    public String toString() {
-        return "{" +
-                "\"x\":\"" + x +
-                "\", \"y\":\"" + y +
-                "\", \"r\":\"" + r +
-                "\", \"date\":\"" + date  +
-                "\", \"res\":\"" + res +
-                "\"}";
-    }
+
 }
