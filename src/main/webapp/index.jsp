@@ -1,18 +1,9 @@
 <%@ page import="beanComponents.TableData" %>
-<%@ page import="java.util.List" %>
 <%@ page import="java.text.SimpleDateFormat" %>
-<%@ page import="java.util.Locale" %>
-<jsp:useBean id="tableDataBean" scope="session" class="beanComponents.TableDataStatefulBean"/>
-<%--
-
-
-  Created by IntelliJ IDEA.
-  User: ACER
-  Date: 24.09.2020
-  Time: 21:13
-  To change this template use File | Settings | File Templates.
---%>
+<%@ page import="java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<jsp:useBean id="tableDataBean" scope="session" class="beanComponents.TableDataStatefulBean"/>
+<% List<TableData> tableData = tableDataBean.getResults(); %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,6 +13,14 @@
     <script src="validator.js"></script>
     <script src="sender.js"></script>
     <script src="svg_image.js"></script>
+    <script>
+
+        $(document).ready(function () {
+            <% for(TableData data: tableData) { %>
+                point_draw(<%= data.getX() %>, <%= data.getY() %>, <%= data.getR() %>, <%= data.isRes() %>);
+            <%}  %>
+        });
+    </script>
 </head>
 <body>
 <header>
@@ -138,14 +137,18 @@
             </tr>
             </thead>
             <tbody>
-            <% List<TableData> tableData = tableDataBean.getResults();
-                for(TableData data: tableData) {%>
+            <% for (TableData data : tableData) {%>
             <tr>
-                <td><%= data.getX()%></td>
-                <td><%= data.getY()%></td>
-                <td><%= data.getR()%></td>
-                <td><%= new SimpleDateFormat("HH:mm:ss").format(data.getDate())%></td>
-                <td><%= data.isRes()%></td>
+                <td><%= data.getX()%>
+                </td>
+                <td><%= data.getY()%>
+                </td>
+                <td><%= data.getR()%>
+                </td>
+                <td><%= new SimpleDateFormat("HH:mm:ss").format(data.getDate())%>
+                </td>
+                <td><%= data.isRes()%>
+                </td>
             </tr>
             <% } %>
             </tbody>

@@ -15,7 +15,7 @@ function toTable(data) {
     let r = data.r;
     let date = new Date(data.date);
     let time = date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
-    let res = String(data.res);
+    let res = data.res;
     point_draw(x,y,r,res);
     return "<tr><td>" + x + "</td><td>" + y + "</td><td>" + r + "</td><td>" + time + "</td><td>" + res + "</td></tr>";
 }
