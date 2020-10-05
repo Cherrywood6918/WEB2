@@ -1,6 +1,7 @@
 <%@ page import="beanComponents.TableData" %>
 <%@ page import="java.util.List" %>
 <%@ page import="java.text.SimpleDateFormat" %>
+<%@ page import="java.util.Locale" %>
 <jsp:useBean id="tableDataBean" scope="session" class="beanComponents.TableDataStatefulBean"/>
 <%--
 
@@ -143,7 +144,7 @@
                 <td><%= data.getX()%></td>
                 <td><%= data.getY()%></td>
                 <td><%= data.getR()%></td>
-                <td><%= data.getDate()%></td>
+                <td><%= new SimpleDateFormat("HH:mm:ss").format(data.getDate())%></td>
                 <td><%= data.isRes()%></td>
             </tr>
             <% } %>
