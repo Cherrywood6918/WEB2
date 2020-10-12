@@ -1,7 +1,7 @@
 "use strict";
 
 function validateY() {
-    let y = $('#field_Y').val().match(/^[0-4][,|.]\d+$|^-[0-3][,.]\d+$|^[0-5]$|^-[0-3]$/);
+    let y = $('#field_Y').val().match(/^[0-4][,|.]\d+$|^-[0-2][,.]\d+$|^[0-5]$|^-[0-3]$/);
     if (y == null || y[0] === "-0") {
         $('#field_Y').addClass('input-invalid');
         return false;

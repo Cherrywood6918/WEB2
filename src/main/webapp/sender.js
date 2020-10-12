@@ -10,12 +10,20 @@ function sendRequest(x,y,r,flag) {
 }
 
 function toTable(data) {
-    let x = data.x;
-    let y = data.y;
-    let r = data.r;
+    let x =  toDouble(data.x);
+    let y = toDouble(data.y);
+    let r =  toDouble(data.r);
     let date = new Date(data.date);
-    let time = date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
+    let time = toTime(date.getHours()) + ":" + toTime(date.getMinutes()) + ":" + toTime(date.getSeconds());
     let res = data.res;
+    toDouble(x);
     point_draw(x,y,r,res);
     return "<tr><td>" + x + "</td><td>" + y + "</td><td>" + r + "</td><td>" + time + "</td><td>" + res + "</td></tr>";
 }
+
+function toDouble(num) {
+    return (num - Math.trunc(num)) === 0? (num + ".0") : num;
+}
+ function toTime(time) {
+     return (time <= 9)? ("0" + time) : time;
+ }
