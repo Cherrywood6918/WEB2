@@ -2,6 +2,7 @@ package beanComponents;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Objects;
 
 public class TableData implements Serializable {
     private double x;
@@ -61,5 +62,31 @@ public class TableData implements Serializable {
         this.res = res;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        TableData data = (TableData) o;
+        return Double.compare(data.x, x) == 0 &&
+                Double.compare(data.y, y) == 0 &&
+                Double.compare(data.r, r) == 0 &&
+                res == data.res &&
+                Objects.equals(date, data.date);
+    }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(x, y, r, date, res);
+    }
+
+    @Override
+    public String toString() {
+        return "TableData{" +
+                "x=" + x +
+                ", y=" + y +
+                ", r=" + r +
+                ", date=" + date +
+                ", res=" + res +
+                '}';
+    }
 }

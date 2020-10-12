@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
 
@@ -28,8 +27,9 @@ public class AreaCheckServlet extends HttpServlet {
                 double x = Double.parseDouble(req.getParameter("coordinateX"));
                 double y = Double.parseDouble(req.getParameter("coordinateY"));
                 double r = Double.parseDouble(req.getParameter("radius"));
-                String flag = req.getParameter("flag");
-                if (validate(x, y, r, flag)) {
+                boolean flag = Boolean.parseBoolean(req.getParameter("flag"));
+                boolean valid = flag?(rIsValid(r)):(xIsValid(x) && yIsValid(y) && rIsValid(r));
+                if (valid) {
                     TableData tableData = dataGeneration(x, y, r);
                     tableDataStatefulBean.addData(tableData);
                     try(PrintWriter printWriter = resp.getWriter()) {
@@ -54,10 +54,16 @@ public class AreaCheckServlet extends HttpServlet {
         return new TableData(x, y, r, date, res);
     }
 
-    private boolean validate(double x, double y, double r, String flag) {
-        Double[] xLists = {-5.0, -4.0, -3.0, -2.0, -1.0, 0.0, 1.0, 2.0, 3.0};
-        if (flag.equals("button")) return Arrays.asList(xLists).contains(x) && y <= 5 && y >= -3 && r >= 2 && r <= 5;
-        else if (flag.equals("canvas")) return r >= 2 && r <= 5;
-        else return  false;
+    private boolean xIsValid(double x) {
+        Double[] xLists = {-5d, -4d, -3d, -2d, -1d, 0d, 1d, 2d, 3.d};
+        return Arrays.asList(xLists).contains(x);
+    }
+
+    private boolean yIsValid(double y) {
+        return y <= 5 && y >= -3;
+    }
+
+    private boolean rIsValid(double r) {
+        return r >= 2 && r <= 5;
     }
 }
